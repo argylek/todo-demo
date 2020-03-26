@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 # class Api::TodosController handles full backend for the API
-
 class Api::TodosController < ApplicationController
   def index
     render json: Todo.order(created_at: :desc)
