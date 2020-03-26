@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::TodosController < ApplicationController
   def index
     render json: Todo.order(created_at: :desc)
@@ -8,6 +10,13 @@ class Api::TodosController < ApplicationController
     render json: todo
   end
 
-  
+  def upate
+    todo = Todo.find(params[:id])
+    todo.update(complete: !todo.complete)
+    render json: todo
+  end
 
+  def destroy
+    Todo.find(params[id]).destroy
+  end
 end
